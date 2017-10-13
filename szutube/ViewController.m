@@ -320,6 +320,14 @@ didSignInForUser:(GIDGoogleUser *)user
             {
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
                 [self.tvVideos scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:NO];
+                
+                /*
+                dispatch_after(DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^(void)
+                {
+                    [self.tvVideos scrollToRowAtIndexPath: [NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionBottom  animated:NO];
+                });
+                 */
+                
             }
             [self.tvVideos layoutIfNeeded];
             
@@ -334,9 +342,9 @@ didSignInForUser:(GIDGoogleUser *)user
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //return [self.displayResults count];
+    return [self.displayResults count];
     //return INT_MAX;
-    return 500;
+    //return 500;
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
